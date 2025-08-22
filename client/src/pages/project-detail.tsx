@@ -23,6 +23,31 @@ export default function ProjectDetail() {
   }
   const sortedBlocks = contentBlocks.sort((a: any, b: any) => a.order - b.order);
 
+  // Calculate how many other projects to show based on content length
+  const calculateOtherProjectsCount = () => {
+    const totalBlocks = sortedBlocks.length;
+    const totalTextLength = sortedBlocks
+      .filter(block => block.type === 'text')
+      .reduce((total, block) => total + (block.content?.length || 0), 0);
+    
+    // If no content or very short, show 0
+    if (totalBlocks === 0 || totalTextLength < 100) return 0;
+    
+    // If minimal content (1 block or short text), show 1
+    if (totalBlocks <= 1 || totalTextLength < 300) return 1;
+    
+    // If moderate content (2-3 blocks or medium text), show 2
+    if (totalBlocks <= 3 || totalTextLength < 600) return 2;
+    
+    // If good content (4-5 blocks or long text), show 3
+    if (totalBlocks <= 5 || totalTextLength < 1000) return 3;
+    
+    // If lots of content, show maximum 4
+    return 4;
+  };
+
+  const otherProjectsCount = calculateOtherProjectsCount();
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-dark-900 text-slate-100 flex items-center justify-center">
@@ -199,7 +224,7 @@ export default function ProjectDetail() {
               </div>
 
               {/* Other Projects Section */}
-              {projects.filter(p => p.id !== project.id).length > 0 && (
+              {otherProjectsCount > 0 && projects.filter(p => p.id !== project.id).length > 0 && (
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -210,7 +235,7 @@ export default function ProjectDetail() {
                   <div className="space-y-4">
                     {projects
                       .filter(p => p.id !== project.id)
-                      .slice(0, 4)
+                      .slice(0, otherProjectsCount)
                       .map((otherProject, index) => (
                         <motion.div
                           key={otherProject.id}
