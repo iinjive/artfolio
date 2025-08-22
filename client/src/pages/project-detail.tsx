@@ -231,7 +231,7 @@ export default function ProjectDetail() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="space-y-4"
                 >
-                  <h3 className="text-xl font-title font-bold text-slate-100">Other Projects</h3>
+                  <h3 className="text-xl font-title font-bold text-slate-100 pl-6">Other Projects</h3>
                   <div className="space-y-4">
                     {projects
                       .filter(p => p.id !== project.id)
