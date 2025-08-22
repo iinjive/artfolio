@@ -1,0 +1,13 @@
+Design and build a modern, minimalist portfolio website for a technical and environment artist named Mark Raevski. The site must have a sophisticated, expensive-looking aesthetic without being gaudy. The overall theme is dark, drawing inspiration from minimal techno and liquid glass styles, using subtly rounded corners and elegant accent colors. Avoid neon and bright primary colors.
+
+The site must feature a full-screen, interactive intro animation upon loading. This animation should resemble a stylish command-line interface but function purely as a visual effect. The animation should display the text "Profile: Mark Raevski - Technical Art, Environment Art." followed by "Loading portfolio...". The entire sequence should be quick, lasting no more than 2 seconds. After the text disappears, the static title "MARK RAEVSKI PORTFOLIO" should appear prominently. This title will then slide down smoothly to reveal a clean, minimalist logo above it.
+
+Following the intro, the main page content should be organized as follows:
+
+About Section: A brief introduction to Mark Raevski, the artist. This section will feature a professional photograph, a short text bio, and a light infographic or skill icons highlighting expertise in programs like Unreal Engine, Houdini, Blender, and Substance Painter. The layout should be interesting and non-standard, perhaps using an asymmetrical grid.
+
+Portfolio Gallery: A grid of project cards, presented in a unique and stylish layout with varied sizes and subtle offsets. Each card will display a project image. On hover, the card should fill with a semi-transparent accent color, and the project title and software used (e.g., "Project Name | UE5, Houdini") will fade in elegantly. Clicking a card will lead to a detailed project page formatted like a mini-blog, where the artist can share extensive information, images, graphs, and videos about the project's creation.
+
+Contact Section: Located at the bottom of the page, this section will include stylish links to the artist’s email and Telegram. These links should feature a subtle, custom animation on hover, such as a smooth underline or a color change.
+
+The entire design should feel premium and contemporary, with all animations being fluid and non-distracting. The typography should be clean and readable, utilizing a modern sans-serif font like Poppins or Inter. The use of interesting layout choices and bespoke animations is crucial for achieving a memorable and professional result.

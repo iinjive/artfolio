@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Raevski - Technical & Environment Artist Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    },
+                    colors: {
+                        'dark': {
+                            900: '#0A0A0A',
+                            800: '#141416',
+                            700: '#1E1E20',
+                            600: '#2A2A2D'
+                        },
+                        'accent': {
+                            500: '#6366F1',
+                            400: '#8B5CF6'
+                        },
+                        'glass': 'rgba(255,255,255,0.05)',
+                        'glass-border': 'rgba(255,255,255,0.1)'
+                    },
+                    backdropBlur: {
+                        'glass': '12px'
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-dark-900 text-slate-100 font-sans overflow-x-hidden">
+    <!-- Intro Animation Overlay -->
+    <div id="intro-overlay" class="fixed inset-0 z-50 bg-dark-900 flex items-center justify-center">
+        <div class="text-center">
+            <div id="terminal-text" class="font-mono text-lg text-accent-500 opacity-0">
+                <div class="typing-cursor">█</div>
+            </div>
+            <h1 id="main-title" class="text-5xl md:text-6xl font-bold text-slate-100 opacity-0 mt-8">
+                MARK RAEVSKI PORTFOLIO
+            </h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="opacity-0">
+        <!-- Header/Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-40 bg-glass backdrop-blur-glass border-b border-glass-border">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-xl font-semibold">MR</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-accent-500 transition-colors">About</a>
+                    <a href="#portfolio" class="hover:text-accent-500 transition-colors">Portfolio</a>
+                    <a href="#contact" class="hover:text-accent-500 transition-colors">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center relative pt-20">
+            <div class="text-center max-w-4xl mx-auto px-6">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent">
+                    MARK RAEVSKI
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-400 mb-8 font-light">
+                    Technical Artist • Environment Artist
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-xl px-6 py-3">
+                        <span class="text-sm text-slate-300">Specializing in</span>
+                    </div>
+                    <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-xl px-6 py-3">
+                        <span class="text-sm text-slate-300">Unreal Engine</span>
+                    </div>
+                    <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-xl px-6 py-3">
+                        <span class="text-sm text-slate-300">Houdini</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Decorative elements -->
+            <div class="absolute top-1/4 left-10 w-2 h-2 bg-accent-500 rounded-full opacity-60"></div>
+            <div class="absolute bottom-1/3 right-20 w-3 h-3 bg-blue-500 rounded-full opacity-40"></div>
+            <div class="absolute top-1/2 right-10 w-1 h-1 bg-purple-500 rounded-full opacity-80"></div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <!-- Text Content - Asymmetrical Layout -->
+                    <div class="lg:col-span-7 lg:col-start-1">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-8 text-slate-100">
+                            About
+                        </h2>
+                        <div class="space-y-6 text-slate-300 text-lg leading-relaxed">
+                            <p data-mock="true">
+                                Mark Raevski is a seasoned technical and environment artist with over 8 years of experience crafting immersive digital worlds and optimizing complex visual systems. His expertise spans from procedural environment generation to advanced shader development.
+                            </p>
+                            <p data-mock="true">
+                                Specializing in real-time rendering pipelines, Mark has contributed to numerous AAA game productions and architectural visualizations, consistently pushing the boundaries of what's possible in interactive media.
+                            </p>
+                        </div>
+                        
+                        <!-- Skills Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                            <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-xl p-6 text-center hover:bg-glass-border transition-all">
+                                <i class="fab fa-unity text-3xl text-accent-500 mb-3"></i>
+                                <h4 class="font-semibold text-sm">Unreal Engine</h4>
+                            </div>
+                            <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-xl p-6 text-center hover:bg-glass-border transition-all">
+                                <i class="fas fa-cube text-3xl text-blue-500 mb-3"></i>
+                                <h4 class="font-semibold text-sm">Houdini</h4>
+                            </div>
+                            <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-xl p-6 text-center hover:bg-glass-border transition-all">
+                                <i class="fas fa-shapes text-3xl text-orange-500 mb-3"></i>
+                                <h4 class="font-semibold text-sm">Blender</h4>
+                            </div>
+                            <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-xl p-6 text-center hover:bg-glass-border transition-all">
+                                <i class="fas fa-palette text-3xl text-green-500 mb-3"></i>
+                                <h4 class="font-semibold text-sm">Substance</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image - Offset positioning -->
+                    <div class="lg:col-span-4 lg:col-start-9">
+                        <div class="relative">
+                            <!-- Professional artist headshot -->
+                            <img data-mock-image="true" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=1000" alt="Mark Raevski - Professional Portrait" class="rounded-2xl shadow-2xl w-full object-cover h-96 lg:h-[500px]" />
+                            <!-- Glass overlay effect -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900/30 via-transparent to-transparent rounded-2xl"></div>
+                            <!-- Floating accent -->
+                            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent-500/20 backdrop-blur-glass rounded-2xl border border-accent-500/30"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Gallery -->
+        <section id="portfolio" class="py-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-16 text-slate-100 text-center">
+                    Featured Work
+                </h2>
+
+                <!-- Portfolio Grid - Masonry Style -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- @MAP: projects.map(project => ( -->
+                    
+                    <!-- Project Card 1 - Large -->
+                    <div class="portfolio-card lg:col-span-2 lg:row-span-2 relative group cursor-pointer overflow-hidden rounded-2xl">
+                        <!-- Cyberpunk cityscape with neon lighting and futuristic buildings -->
+                        <img src="https://pixabay.com/get/g05c5a64f94f4b3dffce2a6179d2f69465cdc0ce92df4555093dcfe3fdf9ec7be026f5af4ca6bb6886fb72cdc3ce0e2feb8fe89aafa4d9d2f64672c7bce11749d_1280.jpg" alt="Cyberpunk Environment" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-accent-500/0 group-hover:bg-accent-500/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2" data-mock="true">Cyberpunk Metropolis</h3>
+                                <p class="text-sm opacity-90" data-mock="true">UE5 • Houdini • Substance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="portfolio-card relative group cursor-pointer overflow-hidden rounded-2xl">
+                        <!-- Mystical forest environment with atmospheric lighting -->
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Forest Environment" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-accent-500/0 group-hover:bg-accent-500/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2" data-mock="true">Mystical Woods</h3>
+                                <p class="text-sm opacity-90" data-mock="true">Blender • UE5</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="portfolio-card relative group cursor-pointer overflow-hidden rounded-2xl">
+                        <!-- Industrial sci-fi corridor with metallic surfaces -->
+                        <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Sci-fi Interior" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-accent-500/0 group-hover:bg-accent-500/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2" data-mock="true">Station Alpha</h3>
+                                <p class="text-sm opacity-90" data-mock="true">UE5 • Substance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="portfolio-card md:col-span-2 relative group cursor-pointer overflow-hidden rounded-2xl">
+                        <!-- Desert landscape with ancient ruins and dramatic sky -->
+                        <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=600" alt="Desert Ruins" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-accent-500/0 group-hover:bg-accent-500/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2" data-mock="true">Ancient Sands</h3>
+                                <p class="text-sm opacity-90" data-mock="true">Houdini • UE5 • World Machine</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5 -->
+                    <div class="portfolio-card relative group cursor-pointer overflow-hidden rounded-2xl">
+                        <!-- Underwater scene with coral reefs and marine life -->
+                        <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Underwater Environment" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-accent-500/0 group-hover:bg-accent-500/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2" data-mock="true">Coral Gardens</h3>
+                                <p class="text-sm opacity-90" data-mock="true">Blender • UE5</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6 -->
+                    <div class="portfolio-card relative group cursor-pointer overflow-hidden rounded-2xl">
+                        <!-- Mountain landscape with snow and dramatic lighting -->
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Mountain Peak" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-accent-500/0 group-hover:bg-accent-500/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2" data-mock="true">Peak Serenity</h3>
+                                <p class="text-sm opacity-90" data-mock="true">World Machine • UE5</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- @END_MAP )) -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-6 border-t border-dark-700">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-slate-100">
+                    Let's Create Together
+                </h2>
+                <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
+                    Ready to bring your vision to life? Get in touch to discuss your next project.
+                </p>
+
+                <!-- Contact Cards -->
+                <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                    <!-- Email Contact -->
+                    <a href="mailto:mark@example.com" data-mock="true" class="contact-link group block">
+                        <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-2xl p-8 hover:bg-glass-border transition-all duration-300 hover:scale-105">
+                            <div class="text-3xl text-accent-500 mb-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Email</h3>
+                            <p class="text-slate-400 group-hover:text-accent-500 transition-colors">
+                                mark@example.com
+                            </p>
+                            <!-- Animated underline -->
+                            <div class="w-0 group-hover:w-full h-0.5 bg-accent-500 transition-all duration-300 mx-auto mt-4"></div>
+                        </div>
+                    </a>
+
+                    <!-- Telegram Contact -->
+                    <a href="https://t.me/markraevski" data-mock="true" class="contact-link group block">
+                        <div class="bg-glass backdrop-blur-glass border border-glass-border rounded-2xl p-8 hover:bg-glass-border transition-all duration-300 hover:scale-105">
+                            <div class="text-3xl text-blue-500 mb-4">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Telegram</h3>
+                            <p class="text-slate-400 group-hover:text-blue-500 transition-colors">
+                                @markraevski
+                            </p>
+                            <!-- Animated underline -->
+                            <div class="w-0 group-hover:w-full h-0.5 bg-blue-500 transition-all duration-300 mx-auto mt-4"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6 border-t border-dark-700">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+                <div class="text-slate-400 mb-4 md:mb-0">
+                    © 2024 Mark Raevski. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-accent-500 transition-colors">
+                        <i class="fab fa-artstation"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-accent-500 transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-accent-500 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // Intro Animation Sequence
+            const introOverlay = document.getElementById('intro-overlay');
+            const terminalText = document.getElementById('terminal-text');
+            const mainTitle = document.getElementById('main-title');
+            const mainContent = document.getElementById('main-content');
+
+            // Animation sequence
+            setTimeout(() => {
+                terminalText.style.opacity = '1';
+                typeWriter('Profile: Mark Raevski - Technical Art, Environment Art.', terminalText, () => {
+                    setTimeout(() => {
+                        typeWriter('Loading portfolio...', terminalText, () => {
+                            setTimeout(() => {
+                                terminalText.style.opacity = '0';
+                                setTimeout(() => {
+                                    mainTitle.style.opacity = '1';
+                                    mainTitle.style.transform = 'translateY(0)';
+                                    setTimeout(() => {
+                                        introOverlay.style.opacity = '0';
+                                        mainContent.style.opacity = '1';
+                                        setTimeout(() => {
+                                            introOverlay.style.display = 'none';
+                                        }, 500);
+                                    }, 800);
+                                }, 300);
+                            }, 400);
+                        });
+                    }, 200);
+                });
+            }, 100);
+
+            // Typewriter effect
+            function typeWriter(text, element, callback) {
+                element.innerHTML = '<div class="typing-cursor">█</div>';
+                let i = 0;
+                const speed = 30;
+                
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML = text.substring(0, i + 1) + '<span class="typing-cursor">█</span>';
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        element.innerHTML = text;
+                        if (callback) callback();
+                    }
+                }
+                type();
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Portfolio card click handlers
+            document.querySelectorAll('.portfolio-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // TODO: Navigate to detailed project page
+                    console.log('Navigate to project details page');
+                });
+            });
+
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply scroll animations to sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        })();
+    </script>
+
+    <style>
+        .typing-cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Smooth transitions for all interactive elements */
+        .portfolio-card,
+        .contact-link,
+        nav a {
+            transition: all 0.3s ease;
+        }
+
+        /* Glass morphism effect enhancement */
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #141416;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6366F1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8B5CF6;
+        }
+
+        /* Ensure smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</body>
+</html>
