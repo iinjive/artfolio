@@ -71,7 +71,7 @@ export default function ContactSection() {
               data-testid={`link-${contact.name.toLowerCase()}`}
             >
               <div className="glass-effect rounded-xl p-6 hover:bg-glass-border transition-all duration-300">
-                <div className={`text-2xl ${contact.color} mb-3`}>
+                <div className={`text-2xl ${contact.color} mb-3 flex justify-center`}>
                   <contact.icon />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{contact.name}</h3>
