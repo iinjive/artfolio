@@ -165,8 +165,13 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Static down arrow */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          {/* Static down arrow - using motion.div for consistent positioning */}
+          <motion.div 
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0 }}
+          >
             <button
               onClick={() => {
                 const aboutSection = document.getElementById('about');
@@ -177,7 +182,18 @@ export default function HeroSection() {
               className="group flex flex-col items-center text-slate-400 hover:text-accent-500 transition-colors cursor-pointer"
               data-testid="button-scroll-down"
             >
-              <div className="w-6 h-6 text-slate-400 group-hover:text-accent-500 transition-colors">
+              <motion.div 
+                className="w-6 h-6 text-slate-400 group-hover:text-accent-500 transition-colors"
+                initial={false}
+                animate={{ y: 0 }}
+                transition={{ duration: 0 }}
+                style={{ 
+                  willChange: 'auto',
+                  transform: 'translate3d(0, 0, 0)',
+                  backfaceVisibility: 'hidden',
+                  transformOrigin: 'center center'
+                }}
+              >
                 <svg
                   width="24"
                   height="24"
@@ -190,9 +206,9 @@ export default function HeroSection() {
                 >
                   <polyline points="6,9 12,15 18,9"></polyline>
                 </svg>
-              </div>
+              </motion.div>
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
     );
