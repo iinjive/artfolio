@@ -24,8 +24,8 @@ export default function HeroSection() {
   };
 
   useEffect(() => {
-    // Check if animation should be skipped
-    const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
+    // Check if animation should be skipped using localStorage for persistence
+    const hasSeenIntro = localStorage.getItem('hasSeenIntro');
     if (hasSeenIntro) {
       setConsoleComplete(true);
       setShowTitle(true);
@@ -80,6 +80,68 @@ export default function HeroSection() {
     </svg>
   );
 
+  // If animation is complete, render static version to prevent glitches
+  if (animationComplete) {
+    return (
+      <section className="min-h-screen flex items-center justify-center relative pt-20">
+        <div className="text-center max-w-6xl mx-auto px-6 -mt-16">
+          <div className="space-y-6">
+            {/* Static logo container */}
+            <div className="relative h-20 flex items-center justify-center">
+              <div className="absolute">
+                <CubeLogo />
+              </div>
+            </div>
+
+            {/* Static title section */}
+            <div className="space-y-6">
+              <h1 className="text-6xl md:text-8xl font-title font-bold text-gradient whitespace-nowrap overflow-visible" data-testid="text-hero-title">
+                MARK RAEVSKI
+              </h1>
+
+              <p 
+                className="text-xl md:text-2xl font-title text-accent-500 font-light"
+                data-testid="text-hero-subtitle"
+              >
+                Technical Artist • Environment Artist
+              </p>
+            </div>
+          </div>
+
+          {/* Static down arrow */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <button
+              onClick={() => {
+                const aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                  aboutSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="group flex flex-col items-center text-slate-400 hover:text-accent-500 transition-colors cursor-pointer"
+              data-testid="button-scroll-down"
+            >
+              <div className="w-6 h-6 text-slate-400 group-hover:text-accent-500 transition-colors">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="6,9 12,15 18,9"></polyline>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Render animated version only on first visit
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-20">
       <div className="text-center max-w-6xl mx-auto px-6 -mt-16">
@@ -104,7 +166,7 @@ export default function HeroSection() {
                       // Step 15: After subtitle appears, complete animation
                       setTimeout(() => {
                         setAnimationComplete(true);
-                        sessionStorage.setItem('hasSeenIntro', 'true');
+                        localStorage.setItem('hasSeenIntro', 'true');
                       }, 1200);
                     }, 1000);
                   }, 400);
