@@ -340,7 +340,7 @@ export default function HeroSection() {
                 }
                 transition={
                   arrowBounceComplete
-                    ? { duration: 0 } // No animation when static
+                    ? { duration: 0.2, ease: "easeOut" } // Smooth transition to static position
                     : { 
                         duration: 1.8, 
                         ease: "easeOut", 
@@ -350,7 +350,8 @@ export default function HeroSection() {
                 style={{ 
                   willChange: arrowBounceComplete ? 'auto' : 'transform',
                   transform: 'translate3d(0, 0, 0)',
-                  backfaceVisibility: 'hidden'
+                  backfaceVisibility: 'hidden',
+                  transformOrigin: 'center center' // Ensure transforms happen from center
                 }}
                 className="w-6 h-6 text-slate-400 group-hover:text-accent-500 transition-colors"
               >
