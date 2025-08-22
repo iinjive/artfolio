@@ -352,15 +352,15 @@ export default function HeroSection() {
                 animate={
                   arrowBounceComplete 
                     ? { y: 0 } // Static position after bounce completes
-                    : { y: [0, -12, 0, -8, 0, -4, 0] } // Bouncing sequence
+                    : { y: [0, -8, 0, -5, 0, -2, 0] } // Gentler bouncing sequence
                 }
                 transition={
                   arrowBounceComplete
-                    ? { duration: 0.2, ease: "easeOut" } // Smooth transition to static position
+                    ? { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } // Smooth transition to static position
                     : { 
-                        duration: 1.8, 
-                        ease: "easeOut", 
-                        times: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 1] // Timing for each bounce
+                        duration: 3.5, 
+                        ease: [0.25, 0.46, 0.45, 0.94], // Elegant cubic-bezier curve
+                        times: [0, 0.2, 0.35, 0.5, 0.65, 0.8, 1] // More spaced out, elegant timing
                       }
                 }
                 style={{ 
