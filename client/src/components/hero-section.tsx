@@ -10,6 +10,8 @@ export default function HeroSection() {
   const [showSubtitle, setShowSubtitle] = useState(false);
 
   const [titlePosition, setTitlePosition] = useState("center");
+  const [showArrow, setShowArrow] = useState(false);
+  const [arrowBounceComplete, setArrowBounceComplete] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
@@ -218,11 +220,16 @@ export default function HeroSection() {
                     // Step 13: After logo appears, wait longer for suspense then show subtitle
                     setTimeout(() => {
                       setShowSubtitle(true);
-                      // Step 15: After subtitle appears, complete animation
+                      // Step 15: After subtitle appears, show bouncing arrow
                       setTimeout(() => {
-                        setAnimationComplete(true);
-                        sessionStorage.setItem('hasSeenIntro', 'true');
-                      }, 1200);
+                        setShowArrow(true);
+                        // Step 17: After arrow bounces, complete all animations
+                        setTimeout(() => {
+                          setArrowBounceComplete(true);
+                          setAnimationComplete(true);
+                          sessionStorage.setItem('hasSeenIntro', 'true');
+                        }, 2000); // Time for arrow to complete its bounce sequence
+                      }, 800); // Delay after subtitle appears
                     }, 1000);
                   }, 400);
                 }, 500);
@@ -301,12 +308,18 @@ export default function HeroSection() {
 
         </div>
 
-        {/* Animated down arrow appears after animation completes - positioned at bottom center */}
-        {animationComplete && (
+        {/* Bouncing down arrow appears after subtitle - positioned at bottom center */}
+        {showArrow && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0 
+            }}
+            transition={{ 
+              duration: 0.6, 
+              ease: [0.16, 1, 0.3, 1]
+            }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
             <button
@@ -320,8 +333,25 @@ export default function HeroSection() {
               data-testid="button-scroll-down"
             >
               <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: 1, ease: "easeInOut" }}
+                animate={
+                  arrowBounceComplete 
+                    ? { y: 0 } // Static position after bounce completes
+                    : { y: [0, -12, 0, -8, 0, -4, 0] } // Bouncing sequence
+                }
+                transition={
+                  arrowBounceComplete
+                    ? { duration: 0 } // No animation when static
+                    : { 
+                        duration: 1.8, 
+                        ease: "easeOut", 
+                        times: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 1] // Timing for each bounce
+                      }
+                }
+                style={{ 
+                  willChange: arrowBounceComplete ? 'auto' : 'transform',
+                  transform: 'translate3d(0, 0, 0)',
+                  backfaceVisibility: 'hidden'
+                }}
                 className="w-6 h-6 text-slate-400 group-hover:text-accent-500 transition-colors"
               >
                 <svg
