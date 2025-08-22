@@ -135,19 +135,32 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Static title section */}
-            <div className="space-y-6">
+            {/* Static title section - using motion.div to maintain exact positioning */}
+            <motion.div 
+              className="space-y-6"
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0 }}
+            >
               <h1 className="text-6xl md:text-8xl font-title font-bold text-gradient whitespace-nowrap overflow-visible" data-testid="text-hero-title">
                 MARK RAEVSKI
               </h1>
 
-              <p 
+              <motion.p 
                 className="text-xl md:text-2xl font-title text-accent-500 font-light"
                 data-testid="text-hero-subtitle"
+                initial={false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0 }}
+                style={{ 
+                  willChange: 'auto',
+                  transform: 'translate3d(0, 0, 0)', // Force exact positioning
+                  backfaceVisibility: 'hidden' // Prevent sub-pixel rendering
+                }}
               >
                 Technical Artist • Environment Artist
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
 
           {/* Static down arrow */}
@@ -272,7 +285,11 @@ export default function HeroSection() {
                 ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for ultra smooth animation
                 delay: 0
               }}
-              style={{ willChange: 'opacity, transform' }} // Enable hardware acceleration
+              style={{ 
+                willChange: 'opacity, transform',
+                transform: 'translate3d(0, 0, 0)', // Ensure consistent transform baseline
+                backfaceVisibility: 'hidden' // Prevent sub-pixel rendering
+              }}
               className="text-xl md:text-2xl font-title text-accent-500 font-light"
               data-testid="text-hero-subtitle"
             >
