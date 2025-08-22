@@ -93,13 +93,13 @@ export default function RealTimeProjectEditor({ projectId }: RealTimeProjectEdit
       setLastSaved(new Date());
       setHasUnsavedChanges(false);
       toast({
-        title: "Auto-saved",
-        description: "Your changes have been saved automatically.",
+        title: "Project saved",
+        description: "Your changes have been saved successfully.",
       });
     },
     onError: (error: any) => {
       toast({
-        title: "Auto-save failed",
+        title: "Save failed",
         description: error.message || "Something went wrong",
         variant: "destructive",
       });
@@ -128,28 +128,28 @@ export default function RealTimeProjectEditor({ projectId }: RealTimeProjectEdit
     },
   });
 
-  // Auto-save functionality
-  const triggerAutoSave = () => {
-    if (autoSaveTimeoutRef.current) {
-      clearTimeout(autoSaveTimeoutRef.current);
-    }
+  // Auto-save functionality disabled - manual save only
+  // const triggerAutoSave = () => {
+  //   if (autoSaveTimeoutRef.current) {
+  //     clearTimeout(autoSaveTimeoutRef.current);
+  //   }
 
-    autoSaveTimeoutRef.current = setTimeout(() => {
-      if (hasUnsavedChanges && projectForm.title && currentProject) {
-        updateMutation.mutate({
-          id: currentProject.id,
-          ...projectForm,
-        description: "Project details and content are managed through dynamic content blocks.", // Hidden field for schema compatibility
-        content: JSON.stringify(projectForm.content)
-        });
-      }
-    }, 1000); // Auto-save after 1 second of inactivity
-  };
+  //   autoSaveTimeoutRef.current = setTimeout(() => {
+  //     if (hasUnsavedChanges && projectForm.title && currentProject) {
+  //       updateMutation.mutate({
+  //         id: currentProject.id,
+  //         ...projectForm,
+  //       description: "Project details and content are managed through dynamic content blocks.", // Hidden field for schema compatibility
+  //       content: projectForm.content
+  //       });
+  //     }
+  //   }, 1000); // Auto-save after 1 second of inactivity
+  // };
 
   const updateForm = (updates: Partial<typeof projectForm>) => {
     setProjectForm(prev => ({ ...prev, ...updates }));
     setHasUnsavedChanges(true);
-    triggerAutoSave();
+    // triggerAutoSave(); // Disabled - manual save only
   };
 
   const addContentBlock = (type: "image" | "video" | "text" | "title") => {
@@ -200,14 +200,12 @@ export default function RealTimeProjectEditor({ projectId }: RealTimeProjectEdit
         id: currentProject.id,
         ...projectForm,
         description: "Project details and content are managed through dynamic content blocks.", // Hidden field for schema compatibility
-        content: JSON.stringify(projectForm.content)
-      });
+      } as any);
     } else {
       createMutation.mutate({
         ...projectForm,
         description: "Project details and content are managed through dynamic content blocks.", // Hidden field for schema compatibility
-        content: JSON.stringify(projectForm.content)
-      } as Omit<InsertProject, 'id'> & { content: ContentBlock[] });
+      } as any);
     }
   };
 
@@ -357,7 +355,7 @@ export default function RealTimeProjectEditor({ projectId }: RealTimeProjectEdit
                             className="h-full w-full object-cover transition-transform group-hover:scale-105"
                             onError={(e) => {
                               e.currentTarget.style.display = 'none';
-                              e.currentTarget.nextElementSibling!.style.display = 'flex';
+                              (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
                             }}
                           />
                           <div className="hidden h-full w-full items-center justify-center bg-dark-700 text-slate-400">
@@ -430,7 +428,7 @@ export default function RealTimeProjectEditor({ projectId }: RealTimeProjectEdit
             {/* Save Status */}
             <div className="flex items-center text-sm text-slate-400">
               {hasUnsavedChanges ? (
-                <span className="text-yellow-400">● Unsaved changes</span>
+                <span className="text-yellow-400">● Unsaved changes - click Save to save</span>
               ) : lastSaved ? (
                 <span className="text-green-400">✓ Saved {lastSaved.toLocaleTimeString()}</span>
               ) : null}
