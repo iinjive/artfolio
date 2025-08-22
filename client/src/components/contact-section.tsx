@@ -1,10 +1,24 @@
 import { motion } from "framer-motion";
 
+// Local SVG Icons
+const EmailIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+  </svg>
+);
+
+const TelegramIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 10l-4 4 6 6 4-16-18 7 4 2 8-4"/>
+  </svg>
+);
+
 export default function ContactSection() {
   const contacts = [
     {
       name: "Email",
-      icon: "fas fa-envelope",
+      icon: EmailIcon,
       color: "text-accent-500",
       hoverColor: "group-hover:text-accent-500",
       underlineColor: "bg-accent-500",
@@ -13,7 +27,7 @@ export default function ContactSection() {
     },
     {
       name: "Telegram",
-      icon: "fab fa-telegram",
+      icon: TelegramIcon,
       color: "text-blue-500",
       hoverColor: "group-hover:text-blue-500",
       underlineColor: "bg-blue-500",
@@ -58,7 +72,7 @@ export default function ContactSection() {
             >
               <div className="glass-effect rounded-xl p-6 hover:bg-glass-border transition-all duration-300">
                 <div className={`text-2xl ${contact.color} mb-3`}>
-                  <i className={contact.icon}></i>
+                  <contact.icon />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{contact.name}</h3>
                 <p className={`text-sm text-slate-400 ${contact.hoverColor} transition-colors`}>

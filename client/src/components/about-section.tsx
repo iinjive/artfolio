@@ -1,13 +1,19 @@
 import { motion } from "framer-motion";
+import UnrealIcon from "../../../Unreal_icon.svg";
+import HoudiniIcon from "../../../Houdini_icon.svg";
+import BlenderIcon from "../../../Blender_icon.svg";
+import SubstanceIcon from "../../../Substance_icon.svg";
+import MayaIcon from "../../../3ds_icon.svg";
+import ZBrushIcon from "../../../Zbrush_icon.svg";
 
 export default function AboutSection() {
   const skills = [
-    { name: "Unreal Engine", icon: "fab fa-unity", color: "text-accent-500" },
-    { name: "Houdini", icon: "fas fa-cube", color: "text-blue-500" },
-    { name: "Blender", icon: "fas fa-shapes", color: "text-orange-500" },
-    { name: "Substance", icon: "fas fa-palette", color: "text-green-500" },
-    { name: "Maya", icon: "fas fa-mountain", color: "text-purple-500" },
-    { name: "ZBrush", icon: "fas fa-brush", color: "text-red-500" }
+    { name: "Unreal Engine", icon: UnrealIcon, color: "text-accent-500" },
+    { name: "Houdini", icon: HoudiniIcon, color: "text-blue-500" },
+    { name: "Blender", icon: BlenderIcon, color: "text-orange-500" },
+    { name: "Substance", icon: SubstanceIcon, color: "text-green-500" },
+    { name: "Maya", icon: MayaIcon, color: "text-purple-500" },
+    { name: "ZBrush", icon: ZBrushIcon, color: "text-red-500" }
   ];
 
   return (
@@ -45,7 +51,12 @@ export default function AboutSection() {
                   className="glass-effect rounded-xl p-4 flex items-center justify-center hover:bg-glass-border transition-all cursor-pointer w-16 h-16"
                   data-testid={`skill-${skill.name.toLowerCase().replace(' ', '-')}`}
                 >
-                  <i className={`${skill.icon} text-2xl ${skill.color}`}></i>
+                  <img 
+                    src={skill.icon} 
+                    alt={skill.name}
+                    className={`w-8 h-8 ${skill.color}`}
+                    style={{ filter: 'brightness(0) saturate(100%) invert(1)' }}
+                  />
                 </motion.div>
               ))}
             </div>
