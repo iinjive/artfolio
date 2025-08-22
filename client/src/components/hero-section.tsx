@@ -55,8 +55,8 @@ export default function HeroSection() {
     // Don't start animation until fonts are loaded
     if (!fontsLoaded) return;
     
-    // Check if animation should be skipped using localStorage for persistence
-    const hasSeenIntro = localStorage.getItem('hasSeenIntro');
+    // Check if animation should be skipped using sessionStorage (resets on tab close)
+    const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
     if (hasSeenIntro) {
       setConsoleComplete(true);
       setShowTitle(true);
@@ -208,7 +208,7 @@ export default function HeroSection() {
                       // Step 15: After subtitle appears, complete animation
                       setTimeout(() => {
                         setAnimationComplete(true);
-                        localStorage.setItem('hasSeenIntro', 'true');
+                        sessionStorage.setItem('hasSeenIntro', 'true');
                       }, 1200);
                     }, 1000);
                   }, 400);
