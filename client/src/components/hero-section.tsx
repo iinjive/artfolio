@@ -11,6 +11,7 @@ export default function HeroSection() {
 
   const [titlePosition, setTitlePosition] = useState("center");
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const messages = [
     "> Profile: Mark Raevski - Technical Art, Environment Art."
@@ -23,7 +24,37 @@ export default function HeroSection() {
     return baseDelay + variation + pause;
   };
 
+  // Font loading effect
   useEffect(() => {
+    const checkFonts = async () => {
+      try {
+        // Wait for both fonts to load
+        await document.fonts.load('900 1em BasementGrotesque');
+        await document.fonts.load('400 1em Inter');
+        // Small delay to ensure everything is rendered
+        setTimeout(() => {
+          setFontsLoaded(true);
+        }, 100);
+      } catch (error) {
+        // Fallback - show content after a delay even if font loading fails
+        setTimeout(() => {
+          setFontsLoaded(true);
+        }, 500);
+      }
+    };
+    
+    // Check if fonts are already loaded
+    if (document.fonts.check('900 1em BasementGrotesque') && document.fonts.check('400 1em Inter')) {
+      setFontsLoaded(true);
+    } else {
+      checkFonts();
+    }
+  }, []);
+
+  useEffect(() => {
+    // Don't start animation until fonts are loaded
+    if (!fontsLoaded) return;
+    
     // Check if animation should be skipped using localStorage for persistence
     const hasSeenIntro = localStorage.getItem('hasSeenIntro');
     if (hasSeenIntro) {
@@ -62,7 +93,7 @@ export default function HeroSection() {
     }
 
     return () => clearTimeout(timeout);
-  }, [currentText, currentIndex, messages]);
+  }, [currentText, currentIndex, messages, fontsLoaded]);
 
   const CubeLogo = () => (
     <svg width="48" height="48" viewBox="0 0 48 48" className="mx-auto">
@@ -79,6 +110,17 @@ export default function HeroSection() {
       </g>
     </svg>
   );
+
+  // Show loading screen until fonts are loaded
+  if (!fontsLoaded) {
+    return (
+      <section className="min-h-screen flex items-center justify-center relative pt-20">
+        <div className="text-center max-w-6xl mx-auto px-6 -mt-16">
+          <div className="opacity-0">Loading...</div>
+        </div>
+      </section>
+    );
+  }
 
   // If animation is complete, render static version to prevent glitches
   if (animationComplete) {
