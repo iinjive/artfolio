@@ -23,24 +23,40 @@ export default function ProjectDetail() {
   }
   const sortedBlocks = contentBlocks.sort((a: any, b: any) => a.order - b.order);
 
-  // Calculate how many other projects to show based on content length
+  // Calculate how many other projects to show based on overall page content length
   const calculateOtherProjectsCount = () => {
     const totalBlocks = sortedBlocks.length;
-    const totalTextLength = sortedBlocks
-      .filter(block => block.type === 'text')
-      .reduce((total, block) => total + (block.content?.length || 0), 0);
     
-    // If no content or very short, show 0
-    if (totalBlocks === 0 || totalTextLength < 100) return 0;
+    // Calculate weighted content length including all block types
+    const totalContentWeight = sortedBlocks.reduce((total, block) => {
+      switch (block.type) {
+        case 'text':
+          return total + (block.content?.length || 0);
+        case 'image':
+          // Each image counts as equivalent to 200 characters of text
+          return total + 200;
+        case 'video':
+          // Each video counts as equivalent to 300 characters of text  
+          return total + 300;
+        case 'title':
+          // Each title counts as equivalent to 100 characters of text
+          return total + 100;
+        default:
+          return total;
+      }
+    }, 0);
     
-    // If minimal content (1 block or short text), show 1
-    if (totalBlocks <= 1 || totalTextLength < 300) return 1;
+    // If no content or very minimal, show 0
+    if (totalBlocks === 0 || totalContentWeight < 150) return 0;
     
-    // If moderate content (2-3 blocks or medium text), show 2
-    if (totalBlocks <= 3 || totalTextLength < 600) return 2;
+    // If minimal content, show 1
+    if (totalBlocks <= 2 || totalContentWeight < 400) return 1;
     
-    // If good content (4-5 blocks or long text), show 3
-    if (totalBlocks <= 5 || totalTextLength < 1000) return 3;
+    // If moderate content, show 2
+    if (totalBlocks <= 4 || totalContentWeight < 800) return 2;
+    
+    // If good content, show 3
+    if (totalBlocks <= 6 || totalContentWeight < 1200) return 3;
     
     // If lots of content, show maximum 4
     return 4;
