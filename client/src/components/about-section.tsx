@@ -5,6 +5,7 @@ import BlenderIcon from "../../../Blender_icon.svg";
 import SubstanceIcon from "../../../Substance_icon.svg";
 import MayaIcon from "../../../3ds_icon.svg";
 import ZBrushIcon from "../../../Zbrush_icon.svg";
+import ProfilePhoto from "../../../ProfilePhoto.png";
 
 export default function AboutSection() {
   const skills = [
@@ -71,7 +72,7 @@ export default function AboutSection() {
           >
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=1000" 
+                src={ProfilePhoto} 
                 alt="Mark Raevski - Professional Portrait" 
                 className="rounded-2xl shadow-2xl w-full object-cover h-96 lg:h-[500px]"
                 data-testid="img-professional-portrait"
