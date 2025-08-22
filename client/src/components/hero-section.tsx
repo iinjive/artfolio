@@ -262,16 +262,17 @@ export default function HeroSection() {
 
             {/* Subtitle appears after logo completes with dramatic suspense */}
             <motion.p 
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ 
                 opacity: showSubtitle ? 1 : 0,
-                y: showSubtitle ? 0 : 15
+                y: showSubtitle ? 0 : 10
               }}
               transition={{ 
-                duration: 1.5,
-                ease: "easeOut",
-                delay: showSubtitle ? 0.3 : 0
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for ultra smooth animation
+                delay: 0
               }}
+              style={{ willChange: 'opacity, transform' }} // Enable hardware acceleration
               className="text-xl md:text-2xl font-title text-accent-500 font-light"
               data-testid="text-hero-subtitle"
             >
